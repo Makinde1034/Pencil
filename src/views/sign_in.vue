@@ -1,0 +1,122 @@
+<template>
+    <div class="signup">
+        <form  @submit.prevent="login" class="form" action="">
+            <header>Sign In</header>
+            <p>Don't have an account?</p>
+            <input
+                v-model="userDetails.email"
+                placeholder="Email"
+                type="text"
+                name="email"
+                id="email"
+            >
+            <input v-model="userDetails.password"  placeholder="Password" type="password" name="email" id="email">
+            <button>Sign in</button>
+        </form>
+    </div>
+</template>
+
+<script>
+
+import { mapActions } from 'vuex'
+
+export default {
+    data(){
+        return{
+            userDetails:{
+                email : "",
+                password : ""
+            }
+        }
+    },
+    methods:{
+        ...mapActions('userModule',['signIn']),
+
+        login(){
+            this.signIn(this.userDetails)
+        }
+
+       
+
+        
+    },
+    computed:{
+        
+    },
+    
+}
+</script>
+
+<style scoped>
+.signup{
+    padding-left: 200px;
+    padding-right: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.signup h3{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    padding: 20px;
+}
+
+.form p{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 10px;
+    color: #008081;
+    margin-bottom: 20px;
+}
+
+.form header{
+    font-size: 40px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.form input{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 30px;
+    outline: none;
+    /* padding-left: 20px; */
+    font-size: 18px;
+    border-radius: 3px;
+    border: 1px solid grey;
+    outline: none;
+    padding-left: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+}
+
+.form button{
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    background: #008081;
+    color: white;
+    font-weight: 700;
+    border: none;
+    font-size: 18px;
+    border-radius: 3px;
+}
+
+@media  screen and (max-width:480px){
+    .signup{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .form{
+        width:100%;
+    }
+
+}
+</style>
