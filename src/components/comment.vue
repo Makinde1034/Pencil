@@ -47,7 +47,7 @@ export default {
     width: 50%;
     /* padding-top: 30px;
     padding-left: 30px; */
-    border : 1px solid #AAAAAA;
+    border : 1px solid #D0D7DE;
     margin: auto;
     border-radius: 3px;
     margin-top: 20px;
@@ -60,7 +60,7 @@ export default {
 .creator{
     /* height: 50px; */
     width: 100%;
-    background: #F5F5F5;
+    background: #F6F8FA;
     display: flex;
     align-items: center;
     justify-content: space-between;

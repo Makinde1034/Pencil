@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .verification{
     display:flex;
     flex-direction: column;

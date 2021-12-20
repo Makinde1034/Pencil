@@ -63,6 +63,19 @@ const articleModule = {
                     resolve(res);
                 })
             })
+        },
+        // Like a unlike post
+        likeAndUnlikePost({commit},data){
+            return new Promise((resolve,reject)=>{
+                api.likeAndUnlike(data).then((res)=>{
+                    console.log(res)
+                    commit("")
+                    resolve(res)
+                }).catch((err)=>{
+                    reject(err)
+                    console.log(err)
+                })
+            })
         }
     },
     mutations:{

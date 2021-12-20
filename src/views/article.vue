@@ -1,11 +1,11 @@
 <template>
-    <div v-for="(article,index) in articles" :key="index" >
-        <div v-if="article._id === articleId">
+    <div  v-for="(article,index) in articles" :key="index" >
+        <div style="padding-bottom:100px" v-if="article._id === articleId">
             <div class="banner">
                 <div class="title">{{article.title}}</div>
                 <div class="user__details">
                     <div class="user__details__info">
-                        <img src="../assets/logo.png" alt="User image">
+                        <img src="../assets/user.png" alt="User image">
                         <div class="username__date">
                             <p class="username">{{article.creator}}</p>
                             <p class="date">{{article.createdAt}}</p>
@@ -29,8 +29,12 @@
             </div>
             <CommentEditor
                 :articleId="articleId"
+                v-if="isAuthenticated"
                 
             />
+            <div v-else class="register">
+                <p><router-link :to="{name:'Signin'}"> sign</router-link> in or <router-link :to="{name:'Signup'}"> sign up</router-link> to add a comment on this article</p>
+            </div>
             <div  v-for="(comment,index) in article.comments" :key="index" >
                 <Comment 
                     :comment = "comment" 
@@ -47,6 +51,7 @@
 import { mapState,mapActions } from 'vuex'
 import CommentEditor from '../components/comment_editor.vue'
 import Comment from '../components/comment.vue'
+import storage from '../helpers/storage.js'
 
 export default {
     components:{ CommentEditor,Comment },
@@ -59,10 +64,14 @@ export default {
         ...mapState({
             articles : (state) => state.articleModule.globalArticles,
             user : (state) => state.userModule.user
-        })
+        }),
+        isAuthenticated(){
+            return storage.isAuthenticated()
+        }
     },
     methods:{
-        ...mapActions('articleModule',['getGlobalFeeds'])
+        ...mapActions('articleModule',['getGlobalFeeds']),
+        
     },
     mounted(){
         this.getGlobalFeeds()
@@ -93,7 +102,7 @@ export default {
 }
 
 .user__details__info img{
-    height: 20px;
+    height: 30px;
     margin-right: 10px;
 }
 
@@ -156,10 +165,24 @@ export default {
 
 .body__text p{
     font-size: 20px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     line-height: 40px;
     border-bottom: 1px solid #E5E5E5;
     padding-bottom: 50px;
+}
+
+.register{
+    width: 50%;
+    margin: auto;
+}
+
+.register p{
+    font-size: 20px;
+}
+
+.register a{
+    color:#008081;
+    text-decoration: none;
 }
 
 @media  screen and (max-width:480px){

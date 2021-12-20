@@ -47,7 +47,7 @@ export default {
 
 <style scoped>
 .nav{
-    display: flex;
+    display: flex; 
     align-items: center;
     justify-content: space-between;
     padding-left: 200px;
@@ -72,10 +72,11 @@ export default {
 
 }
 
-.nav__ul a{
+.nav__ul a,p{
     padding: 0px 20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-family: 14px;
+    font-weight: 500;
     cursor: pointer;
     color: black;
     text-decoration: none;

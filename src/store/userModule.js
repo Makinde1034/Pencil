@@ -12,7 +12,8 @@ const userModule = {
             test : false,
             token : storage.getToken() || '',
             verificationMessage : "",
-            user : storage.getUserDetails() || ''
+            user : storage.getUserDetails() || '',
+            signInLoading : false
         }
         
     },
@@ -30,7 +31,9 @@ const userModule = {
             })
         },
         signIn({commit},data){
+            
             return new Promise((resolve,reject)=>{
+                commit("signInRequest");
                 api.signIn(data).then((res)=>{
                     resolve(res)
                     console.log(res)
@@ -80,11 +83,12 @@ const userModule = {
         setVerificationMessage(state,message){
             state.verificationMessage = message
         },
-        // setUser(state,user){
-        //     state.user = user
-        // },
+        signInRequest(state){
+            state.signInLoading = true
+        },
         signInSuccess(state,token){
             state.token = token
+            state.signInLoading = false
         },
         logout(state){
             state.user = ''

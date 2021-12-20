@@ -22,7 +22,10 @@
                             <p class="date">{{article.createdAt}}</p>
                         </div>
                     </div>
-                    <div class="likes">{{article.likes}}</div>
+                    <div @click="likeUnlike(article.userId)" class="likes">
+                        <img class="heart" src="../assets/heart.png" alt="">
+                        <span>{{article.likes}}</span>
+                    </div>
                 </div>
                 <div @click="goToArticle(article._id)" class="global__feedmain">
                     <h3 class="title">{{article.title}}</h3>
@@ -39,13 +42,21 @@ import { mapState,mapActions } from 'vuex'
 
 export default {
     methods:{
+        ...mapActions('articleModule',['getGlobalFeeds','likeAndUnlikePost']),
+
         getUser(creator){
             this.$router.push({name:"Profile",params:{creator:creator}});
         },
         goToArticle(id){
             this.$router.push({name:"Article",params:{id:id}});
         },
-        ...mapActions('articleModule',['getGlobalFeeds'])
+        
+        likeUnlike(id){
+            const data = {
+                postId : id
+            }
+            this.likeAndUnlikePost(data)
+        }
     },
     computed:{
         ...mapState({
@@ -138,17 +149,21 @@ export default {
 }
 
 .likes{
-    height: 30px;
-    width: 30px;
+    padding: 3px;
     border: 1px solid #008081;
-    border-radius: 5px;
+    border-radius: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .global__feedmain{
     margin-top: 20px;
+}
+
+.heart{
+    height: 14px;
 }
 
 .title{

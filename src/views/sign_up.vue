@@ -80,10 +80,10 @@ export default {
     height: 50px;
     margin-bottom: 30px;
     outline: none;
-    /* padding-left: 20px; */
+    padding-left: 20px;
     font-size: 18px;
     border-radius: 3px;
-    border: 1px solid grey;
+    border : 1px solid #D0D7DE;
     outline: none;
     /* padding-left: 20px; */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

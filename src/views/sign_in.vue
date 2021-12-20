@@ -2,7 +2,7 @@
     <div class="signup">
         <form  @submit.prevent="login" class="form" action="">
             <header>Sign In</header>
-            <p>Don't have an account?</p>
+            <p class="form_p">Don't have an account?</p>
             <input
                 v-model="userDetails.email"
                 placeholder="Email"
@@ -11,22 +11,28 @@
                 id="email"
             >
             <input v-model="userDetails.password"  placeholder="Password" type="password" name="email" id="email">
-            <button>Sign in</button>
+            <button >
+                <Loader v-if="loading" />
+                <p v-else>Sign in</p>
+            </button>
         </form>
     </div>
 </template>
 
 <script>
 
-import { mapActions } from 'vuex'
+import { mapActions,mapState } from 'vuex'
+import Loader from '../components/loader.vue'
 
 export default {
+    components:{ Loader },
     data(){
         return{
             userDetails:{
                 email : "",
                 password : ""
-            }
+            },
+            buttonDisabled : false
         }
     },
     methods:{
@@ -41,6 +47,9 @@ export default {
         
     },
     computed:{
+        ...mapState({
+            loading : (state)=>state.userModule.signInLoading
+        }),
         
     },
     
@@ -69,7 +78,7 @@ export default {
     padding: 20px;
 }
 
-.form p{
+.form_p{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-top: 10px;
     color: #008081;
@@ -89,7 +98,7 @@ export default {
     /* padding-left: 20px; */
     font-size: 18px;
     border-radius: 3px;
-    border: 1px solid grey;
+    border : 1px solid #D0D7DE; 
     outline: none;
     padding-left: 10px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -107,6 +116,22 @@ export default {
     font-size: 18px;
     border-radius: 3px;
 }
+
+
+
+/* .form button img{
+    height: 18px;
+    animation: load 0.5s linear infinite;
+}
+
+@keyframes load {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+} */
 
 @media  screen and (max-width:480px){
     .signup{

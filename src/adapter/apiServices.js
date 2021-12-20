@@ -30,7 +30,9 @@ export default {
     signIn(data){
         return axios({url:`${BASE_URL}/signin`, method:"POST",data:data});
     },
-
+    destroy(){
+            return localStorage.clear()
+    },
     postComment(data){
         return axios({url:`${BASE_URL}/add-comment`,data:data,headers:this.getHeader(),method:"POST"})
     },
@@ -40,7 +42,8 @@ export default {
         return axios({url:`${BASE_URL}/update-profile`,data:data,headers:this.getHeader(),method:"POST"})
     },
 
-    destroy(){
-        return localStorage.clear()
+    likeAndUnlike(data){
+        return axios({url:`${BASE_URL}/like`,data:data,headers:this.getHeader(),method:"POST"})
     }
+
 }

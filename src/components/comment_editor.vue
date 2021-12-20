@@ -53,8 +53,8 @@ export default {
 <style scoped>
 .comment{
     max-width: 50%;
-    height: 200px;
-    border : 1px solid #AAAAAA;
+    /* height: 200px; */
+    border : 1px solid #D0D7DE;
     margin: auto;
     border-radius: 3px;
     background: #F5F5F5;
@@ -65,7 +65,7 @@ export default {
     border: none;
     outline: none;
     height: 150px;
-    /* padding: 0px 20px 0px 20px; */
+    padding: 20px
 }
 
 .box{
