@@ -1,5 +1,6 @@
 <template>
-  <div  v-if="loading">Loading article...</div>
+    <!-- <div v-if="likedPosts.length === 0">No favourited posts yet</div> -->
+    <div  v-if="loading">Loading article...</div>
     <div v-else v-for="(post,index) in likedPosts" :key="index"  class="global__feedbody">
         <div class="global__feedtop">
             <div class="image__username__date">

@@ -7,13 +7,13 @@
                     <img src="../assets/logo.png" alt="">
                 </div>
                 <div class="username__date">
-                    <p class="username">{{userPosts.userName}}</p>
+                    <p @click="getUser(userPosts.creator)"  class="username">{{userPosts.userName}}</p>
                     <p class="date">November 24, 2021</p>
                 </div>
             </div>
             <div class="likes">{{post.likes}}</div>
         </div>
-        <div class="global__feedmain">
+        <div @click="goToArticle(post._id)" class="global__feedmain">
             <h3 class="title">{{post.title}}</h3>
             <p class="body">{{post.body}}</p>
         </div>
@@ -24,6 +24,14 @@
 import { mapState } from 'vuex'
 
 export default {
+    methods:{
+        getUser(creator){
+            this.$router.push({name:"Profile",params:{creator:creator}});
+        },
+        goToArticle(id){
+            this.$router.push({name:"Article",params:{id:id}});
+        }
+    },
     computed:{
         ...mapState({
             userPosts : (state)=> state.articleModule.userPosts
