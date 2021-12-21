@@ -127,4 +127,18 @@ a{
     
     
 }
+
+@media  screen and (max-width:480px){
+    .wrap{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .articles{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
+
 </style>

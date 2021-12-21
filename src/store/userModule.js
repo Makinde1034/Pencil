@@ -13,7 +13,8 @@ const userModule = {
             token : storage.getToken() || '',
             verificationMessage : "",
             user : storage.getUserDetails() || '',
-            signInLoading : false
+            signInLoading : false,
+            errorMessage : ''
         }
         
     },
@@ -44,7 +45,9 @@ const userModule = {
                     
                 }).catch((err)=>{
                     reject(err)
-                    console.log(err)
+                    console.log(err.response)
+                    const errorMsg = err.response.data.msg
+                    commit("signInFailure",errorMsg)
                 })
             })
         },
@@ -85,10 +88,15 @@ const userModule = {
         },
         signInRequest(state){
             state.signInLoading = true
+            state.errMsg = ''
         },
         signInSuccess(state,token){
             state.token = token
             state.signInLoading = false
+        },
+        signInFailure(state,errMsg){
+            state.signInLoading = false
+            state.errorMessage = errMsg
         },
         logout(state){
             state.user = ''

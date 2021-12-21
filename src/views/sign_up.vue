@@ -101,4 +101,16 @@ export default {
     font-size: 18px;
     border-radius: 3px;
 }
+
+@media  screen and (max-width:480px){
+    .signup{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .form{
+        width:100%;
+    }
+
+}
 </style>

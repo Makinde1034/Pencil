@@ -39,6 +39,7 @@
 
 <script>
 import { mapState,mapActions } from 'vuex'
+import storage from '../helpers/storage'
 
 export default {
     methods:{
@@ -52,10 +53,15 @@ export default {
         },
         
         likeUnlike(id){
-            const data = {
-                postId : id
+            if(storage.isAuthenticated()){
+                const data = {
+                    postId : id
+                }
+                this.likeAndUnlikePost(data)
+            }else{
+                this.$router.push({name:"Signin"})
             }
-            this.likeAndUnlikePost(data)
+            
         }
     },
     computed:{

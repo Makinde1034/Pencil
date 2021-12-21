@@ -148,4 +148,24 @@ export default {
     color:
     white;
 }
+
+@media  screen and (max-width:480px){
+
+    .settings{
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 30px;
+        padding-bottom: 80px;
+    }
+
+    .settings form{
+        width: 100%;
+    }
+
+    .logout{
+        width:100%;
+    }
+
+}
+
 </style>

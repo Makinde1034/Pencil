@@ -53,6 +53,7 @@ export default {
     padding-left: 200px;
     padding-right: 200px;
     height: 60px;
+
     
 }
 
@@ -66,7 +67,7 @@ export default {
 
 .nav__ul{
     display: flex;
-
+    
     justify-content: space-between;
     list-style: none;
 
@@ -83,9 +84,16 @@ export default {
 }
 
 @media  screen and (max-width:480px){
+    .logo{
+        margin-bottom: 20px;
+    }
     .nav{
+        padding-top: 20px;
+        padding-bottom: 20px;
         padding-left: 20px;
         padding-right: 20px;
+        flex-direction: column;
+        height: auto;
     }
 }
 

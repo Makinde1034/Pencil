@@ -1,6 +1,6 @@
 <template>
   <div v-if="loading">Loading article...</div>
-    <div v-else v-for="(post,index) in userPosts.posts" :key="index" class="global__feedbody">
+    <div style="padding-bottom:80px" v-else v-for="(post,index) in userPosts.posts" :key="index" class="global__feedbody">
         <div class="global__feedtop">
             <div class="image__username__date">
                 <div class="image">

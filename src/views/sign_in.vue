@@ -15,6 +15,7 @@
                 <Loader v-if="loading" />
                 <p v-else>Sign in</p>
             </button>
+            <p style="margin-top:20px;color:red">{{errMsg}}</p>
         </form>
     </div>
 </template>
@@ -48,7 +49,8 @@ export default {
     },
     computed:{
         ...mapState({
-            loading : (state)=>state.userModule.signInLoading
+            loading : (state)=>state.userModule.signInLoading,
+            errMsg : (state)=>state.userModule.errorMessage
         }),
         
     },
