@@ -11,7 +11,7 @@
                 <div class="global__feedtop">
                     <div class="image__username__date">
                         <div class="image">
-                            <img src="../assets/logo.png" alt="">
+                            <img :src="article.creatorImage" alt="">
                         </div>
                         <div class="username__date">
                             <p class="username"

@@ -1,5 +1,5 @@
-// module.exports = {
-//   devServer : {
-//     proxy : 'https://pencilng.herokuapp.com'
-//   }
-// }
+module.exports = {
+  devServer: {
+    proxy: 'http://unsplash.com'
+  }
+}

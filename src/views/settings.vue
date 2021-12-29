@@ -5,10 +5,10 @@
             <fieldset>
                 <input 
                     class="custom-file-input" 
-                    placeholder="upload profile picture" 
+                    placeholder="Enter URL to your avarter" 
                     size="60"  
-                    type="file"
-                    @change="getFile($event)"
+                    type="text"
+                    v-model="profile.image"
                     
                 >
                 <input 
@@ -21,11 +21,11 @@
                     v-model="profile.bio"
                 >
                 </textarea>
-                <input 
+                <!-- <input 
                     placeholder="Email" 
                     type="Email"
                     v-model="profile.email"
-                >
+                > -->
                 <button>submit</button>
                 <!-- <input placeholder="Password" type="Password"> -->
             </fieldset>
@@ -47,7 +47,6 @@ export default {
                 image : "",
                 username : "",
                 bio : "",
-                email : ""
             }
         }
     },
@@ -59,8 +58,8 @@ export default {
 
         },
         update(){
-            // this.updateUserProfile()
-            alert("Profile update coming soon")
+            this.updateUserProfile(this.profile);
+            // alert("Profile update coming soon")
         },
         signOut(){
             this.logout()
@@ -74,6 +73,7 @@ export default {
 
 .settings {
     display: flex;
+    padding-bottom: 100px;
     align-items: center;
     flex-direction: column;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -155,7 +155,7 @@ export default {
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 30px;
-        padding-bottom: 80px;
+        padding-bottom: 300px;
     }
 
     .settings form{

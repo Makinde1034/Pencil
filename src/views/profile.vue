@@ -3,7 +3,7 @@
         <div v-if="user._id===creator">
             <div class="banner">
                 <div class="image">
-
+                    <img :src="user.image" alt="">
                 </div>
                 <h3>{{user.email}}</h3>
                 <button>Follow</button>

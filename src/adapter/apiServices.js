@@ -6,6 +6,8 @@ export default {
 
     getHeader(){
         let header = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
             "x-access-token" : localStorage.getItem("token")
         }
         return header;
@@ -39,7 +41,14 @@ export default {
 
     // update user profile
     updateProfile(data){
-        return axios({url:`${BASE_URL}/update-profile`,data:data,headers:this.getHeader(),method:"POST"})
+        // return axios({url:`${BASE_URL}/update-profile`,data, headers:this.getHeader(),method:"POST"})
+        return axios.post(`${BASE_URL}/update-profile`, data, { 
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'x-access-token': localStorage.getItem("token")
+            }
+         })
     },
 
     likeAndUnlike(data){
