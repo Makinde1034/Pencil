@@ -8,7 +8,7 @@
                 </div>
                 <div class="username__date">
                     <p @click="getUser(userPosts.creator)"  class="username">{{userPosts.userName}}</p>
-                    <p class="date">November 24, 2021</p>
+                    <p class="date">{{formatDate(post.createdAt)}}</p>
                 </div>
             </div>
             <div class="likes">{{post.likes}}</div>
@@ -22,6 +22,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { formatDate } from '../helpers/date'
 
 export default {
     methods:{
@@ -30,6 +31,9 @@ export default {
         },
         goToArticle(id){
             this.$router.push({name:"Article",params:{id:id}});
+        },
+        formatDate(date){
+            return formatDate(date)
         }
     },
     computed:{

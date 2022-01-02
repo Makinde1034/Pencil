@@ -6,9 +6,13 @@
                     <img :src="user.image" alt="">
                 </div>
                 <h3>{{user.email}}</h3>
-                 <button v-if="_isFollowing">Unfollow</button>
-                <button v-else  @click="follow(user._id)">Follow</button>
+                <div v-show="currentUser._id !== creator ">
+                    <button v-if="_isFollowing">Unfollow</button>
+                    <button v-else  @click="follow(user._id)">Follow</button>
+                </div>
+                
                
+                
             </div>
             <div class="articles">
                 <div class="articles__navigation">
@@ -62,7 +66,10 @@ export default {
         ...mapState({
             users : (state) => state.userModule.userProfile,
             _isFollowing : (state) => state.userModule.isFollowing
-        })
+        }),
+        currentUser(){
+            return JSON.parse(localStorage.getItem("user"));
+        }
     },
     mounted(){
         

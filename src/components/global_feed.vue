@@ -19,7 +19,7 @@
                             >
                                 {{article.creator}}
                             </p>
-                            <p class="date">{{article.createdAt}}</p>
+                            <p class="date">{{formatDate(article.createdAt)}}</p>
                         </div>
                     </div>
                     <div @click="likeUnlike(article.userId)" class="likes">
@@ -41,6 +41,7 @@
 import { mapState,mapActions } from 'vuex'
 import storage from '../helpers/storage'
 import Skeleton from './skeleton.vue'
+import {formatDate} from '../helpers/date.js'
 
 export default {
     components:{
@@ -71,7 +72,11 @@ export default {
                 this.$router.push({name:"Signin"})
             }
             
+        },
+        formatDate(date){
+            return formatDate(date)
         }
+        
     },
     computed:{
         ...mapState({

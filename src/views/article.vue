@@ -8,7 +8,7 @@
                         <img src="../assets/user.png" alt="User image">
                         <div class="username__date">
                             <p class="username">{{article.creator}}</p>
-                            <p class="date">{{article.createdAt}}</p>
+                            <p class="date">{{formatDate(article.createdAt)}}</p>
                         </div>
                         <!-- display if user is authenticated -->
                         <div v-if="isAuthenticated">
@@ -63,6 +63,7 @@ import { mapState,mapActions } from 'vuex'
 import CommentEditor from '../components/comment_editor.vue'
 import Comment from '../components/comment.vue'
 import storage from '../helpers/storage.js'
+import { formatDate } from '../helpers/date'
 
 export default {
     components:{ CommentEditor,Comment },
@@ -93,6 +94,9 @@ export default {
         },
         redirectToLogin(){
             this.$router.push({name:"Signin"})
+        },
+        formatDate(date){
+            return formatDate(date)
         }
         
     },
