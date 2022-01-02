@@ -6,12 +6,12 @@
                     <h3>Global feed</h3>
                 </div>
             </div>
-            <div v-if="loading">Loading article...</div>
+            <div v-if="loading"><Skeleton /></div>
             <div v-else v-for="article in globalArticles" :key="article._id" class="global__feedbody">
                 <div class="global__feedtop">
                     <div class="image__username__date">
                         <div class="image">
-                            <img :src="article.creatorImage" alt="">
+                            <img src="../assets/user.png" alt="">
                         </div>
                         <div class="username__date">
                             <p class="username"
@@ -40,8 +40,17 @@
 <script>
 import { mapState,mapActions } from 'vuex'
 import storage from '../helpers/storage'
+import Skeleton from './skeleton.vue'
 
 export default {
+    components:{
+        Skeleton
+    },
+    data(){
+        return {
+            // link : "https://www.google.com/search?q=images&rlz=1C1GCEB_enNG850NG850&sxsrf=AOaemvJeje5y5e5555ErwWxLVUtC2w1mCw:1640820384094&tbm=isch&source=iu&ictx=1&fir=LHY-1Uagl8fCxM%252Cl-X2y9oJGN2i-M%252C_%253BPrP1gFH4BkOdiM%252CISkb2KM1Sl3SmM%252C_%253Bv1A5vQPzRgfCGM%252CLHNlCfmH1SFk3M%252C_%253B-Iap6zp20DK6KM%252Cl-X2y9oJGN2i-M%252C_%253BLK6S_eMkLDVwQM%252CB51x0PBR9KNzvM%252C_%253B2eIb5BjhQiiZzM%252CnBiD9BWYMB87aM%252C_%253BL8xfQakH9a8tJM%252CBa_eiczVaD9-zM%252C_%253BB1UJzVLhvEfhPM%252CISkb2KM1Sl3SmM%252C_%253B35FFqCJLKi2TXM%252CcMRXOd2p22EgNM%252C_%253B8EekYKjMUCitwM%252CUkcvm3PybD5jEM%252C_%253BtTplitM2kjOQtM%252C-UStXW0dQEx4SM%252C_%253B1KoCsWV9R0L1JM%252CISkb2KM1Sl3SmM%252C_%253BZR4cdv4n8tR0mM%252Cl-X2y9oJGN2i-M%252C_%253BYwGJ3ieIxMcIkM%252CLlgDpz1LoiuznM%252C_&vet=1&usg=AI4_-kSEp-gA1AXj_OIm-pQOVrD9xcHzCg&sa=X&ved=2ahUKEwiX-YihlIr1AhWMLewKHaFTCWIQ9QF6BAgWEAE#imgrc=PrP1gFH4BkOdiM"
+        }
+    },
     methods:{
         ...mapActions('articleModule',['getGlobalFeeds','likeAndUnlikePost']),
 
@@ -81,6 +90,7 @@ export default {
 .wrap{
     padding-left: 300px;
     padding-right: 300px;
+    padding-bottom: 200px;
 }
 .global{
 

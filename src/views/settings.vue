@@ -1,7 +1,6 @@
 <template>
     <div class="settings">
         <form @submit.prevent="update"  enctype="multipart/form-data">
-            <h1>Profile Settings</h1>
             <fieldset>
                 <input 
                     class="custom-file-input" 
@@ -9,16 +8,19 @@
                     size="60"  
                     type="text"
                     v-model="profile.image"
+                    required
                     
                 >
                 <input 
                     placeholder="Enter your username" 
                     type="text"
                     v-model="profile.username"
+                    required
                 >
                 <textarea
                     placeholder="Enter your bio"
                     v-model="profile.bio"
+                    required
                 >
                 </textarea>
                 <!-- <input 
@@ -73,6 +75,7 @@ export default {
 
 .settings {
     display: flex;
+    padding-top: 50px;
     padding-bottom: 100px;
     align-items: center;
     flex-direction: column;

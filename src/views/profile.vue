@@ -6,7 +6,9 @@
                     <img :src="user.image" alt="">
                 </div>
                 <h3>{{user.email}}</h3>
-                <button>Follow</button>
+                 <button v-if="_isFollowing">Unfollow</button>
+                <button v-else  @click="follow(user._id)">Follow</button>
+               
             </div>
             <div class="articles">
                 <div class="articles__navigation">
@@ -30,6 +32,7 @@
 
 <script>
 import { mapActions,mapState } from 'vuex'
+import storage from '../helpers/storage.js'
 
 export default {
     components : { },
@@ -39,13 +42,26 @@ export default {
         }
     },
     methods:{
-        ...mapActions('userModule',['getUserProfile']),
+        ...mapActions('userModule',['getUserProfile','followUser']),
+        ...mapActions('userModule',['isFollowing']),
         ...mapActions('articleModule',['getUserPosts']),
-        ...mapActions('articleModule',['getLikedPosts'])
+        ...mapActions('articleModule',['getLikedPosts']),
+
+
+        follow(_id){
+            if(storage.isAuthenticated()){
+                const data = {
+                    userId : _id
+                }
+                this.followUser(data)
+            }
+           
+        }
     },
     computed:{
         ...mapState({
-            users : (state) => state.userModule.userProfile
+            users : (state) => state.userModule.userProfile,
+            _isFollowing : (state) => state.userModule.isFollowing
         })
     },
     mounted(){
@@ -53,6 +69,8 @@ export default {
         this.getUserProfile();
         this.getUserPosts(this.creator)
         this.getLikedPosts(this.creator)
+        this.isFollowing(this.creator)
+       
     }
 }
 </script>
@@ -88,6 +106,7 @@ export default {
     background: none;
     color: white;
     cursor: pointer;
+    border-radius: 3px;
 }
 
 .articles{

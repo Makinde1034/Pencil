@@ -2,18 +2,28 @@
   <Nav />
   <router-view></router-view>
   <Footer />
+  <!-- modal && components -->
+  <DeleteModal />
+  <Background />
+  <notifications />
 </template>
 
 <script>
 
 import Nav from './components/nav.vue'
 import Footer from './components/footer.vue'
+import DeleteModal from './components/delete_modal.vue'
+import Background from './components/background.vue'
+import Notifications from './components/notifications.vue'
 
 export default {
   name: 'App',
   components: {
     Nav,
-    Footer
+    Footer,
+    DeleteModal,
+    Background,
+    Notifications
 
   }
 }

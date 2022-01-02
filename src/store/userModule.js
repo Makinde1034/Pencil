@@ -4,6 +4,7 @@ import router from '../router/index.js'
 import storage from '../helpers/storage.js'
 
 
+
 const userModule = {
     namespaced :true,
     state(){
@@ -14,7 +15,9 @@ const userModule = {
             verificationMessage : "",
             user : storage.getUserDetails() || '',
             signInLoading : false,
-            errorMessage : ''
+            errorMessage : '',
+            isFollowing : null,
+            followers : null
         }
         
     },
@@ -77,6 +80,45 @@ const userModule = {
             api.destroy()
             commit("logout")
             router.push("/signin")
+        },
+        followUser({commit},data){
+            return new Promise((resolve,reject)=>{
+                api.followUser(data).then(res=>{
+                    console.log(res,"followed")
+                    resolve(res)
+                    commit("")
+                }).catch(err=>{
+                    reject(err)
+                    console.log(err)
+                })
+            })
+        },
+        isFollowing({commit},id){
+            return new Promise((resolve,reject)=>{
+                const data = {
+                    userId : id
+                }
+                api.isFollowing(data).then((res)=>{
+                    resolve(res);
+                    console.log(res);
+                    commit("setIsFollowing",res.data)
+                }).catch((err)=>{
+                    reject(err)
+                    console.log(err)
+                })
+            })
+        },
+        getFollowNotifications({commit}){
+            return new Promise((resolve,reject)=>{
+                api.getFollowNotifications().then((res)=>{
+                    console.log(res, 'followers');
+                    resolve(res)
+                    commit("setFollowers",res.data)
+                }).catch((err)=>{
+                    console.log(err)
+                    reject(err)
+                })
+            })
         }
     },
     mutations:{
@@ -101,6 +143,12 @@ const userModule = {
         logout(state){
             state.user = ''
             state.token = null
+        },
+        setIsFollowing(state,data){
+            state.isFollowing = data
+        },
+        setFollowers(state,data){
+            state.followers = data
         }
     }
 }

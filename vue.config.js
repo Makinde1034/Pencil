@@ -1,5 +1,5 @@
-module.exports = {
-  devServer: {
-    proxy: 'http://unsplash.com'
-  }
-}
+// module.exports = {
+//   devServer: {
+//     proxy: 'http://unsplash.com'
+//   }
+// }

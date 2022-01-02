@@ -12,17 +12,18 @@
             <router-link to="/">Home</router-link>
             <router-link v-if="!token" to="/signin">Sign in</router-link>
             <router-link v-if="!token" to="/signup">Sign up</router-link>
-            <!-- <router-link v-if="token" to="/publish">New article</router-link> -->
+            <router-link v-if="token" to="/publish">New article</router-link>
             <router-link v-if="token" to="/settings">Settings</router-link>
             <!-- <router-link v-if="token" to="/si">{{}}</router-link> -->
             <p v-if="token">{{userDetails.email}}</p>
+            <img @click="toggleNotModal" src="../assets/notification.png" alt="">
         </ul>
     </nav>
 </template>
 
 <script>
 
-import { mapState } from 'vuex'
+import { mapState,mapActions } from 'vuex'
 
 export default {
     components:{},
@@ -30,6 +31,13 @@ export default {
         return{
 
         }
+    },
+    methods:{
+        ...mapActions('toggleModule',['toggleNotificationModal']),
+        toggleNotModal(){
+            this.toggleNotificationModal()
+        }
+
     },
     computed:{
         ...mapState({
@@ -76,11 +84,20 @@ export default {
 .nav__ul a,p{
     padding: 0px 20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-family: 14px;
+    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    color: black;
+    color: rgb(184, 180, 180);
     text-decoration: none;
+}
+
+.nav__ul a:hover,p:hover{
+    color: black;
+}
+
+.nav__ul img{
+    height: 20px;
+    cursor: pointer;
 }
 
 @media  screen and (max-width:480px){

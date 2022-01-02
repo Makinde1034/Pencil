@@ -25,6 +25,23 @@ export default {
     getLikedPosts(id){
         return axios({url:`${BASE_URL}/get-user-likes/${id}`,method:"GET"})
     },
+    postComment(data){
+        return axios({url:`${BASE_URL}/add-comment`,data:data,headers:this.getHeader(),method:"POST"});
+    },
+    likeAndUnlike(data){
+        return axios({url:`${BASE_URL}/like`,data:data,headers:this.getHeader(),method:"POST"});
+    },
+    publish(data){
+        return axios({url:`${BASE_URL}/post`,data:data, headers:this.getHeader(), method:"POST"});
+    },
+    deletePost(data){
+        return axios({url:`${BASE_URL}/delete-post`,data:data, headers:this.getHeader(),method:"DELETE"});
+    },
+
+
+
+
+
 
     signUp(data){
         return axios.post(`${BASE_URL}/signup`,data)
@@ -33,12 +50,9 @@ export default {
         return axios({url:`${BASE_URL}/signin`, method:"POST",data:data});
     },
     destroy(){
-            return localStorage.clear()
+        return localStorage.clear()
     },
-    postComment(data){
-        return axios({url:`${BASE_URL}/add-comment`,data:data,headers:this.getHeader(),method:"POST"})
-    },
-
+    
     // update user profile
     updateProfile(data){
         // return axios({url:`${BASE_URL}/update-profile`,data, headers:this.getHeader(),method:"POST"})
@@ -48,11 +62,20 @@ export default {
                 'Content-Type': 'application/json',
                 'x-access-token': localStorage.getItem("token")
             }
-         })
+        })
     },
-
-    likeAndUnlike(data){
-        return axios({url:`${BASE_URL}/like`,data:data,headers:this.getHeader(),method:"POST"})
+    // follow a user
+    followUser(data){
+        return axios({url:`${BASE_URL}/follow`, data:data,headers:this.getHeader(),method:"POST"})
+    },
+    // check if isFollowing to render follow and unfollow buttons dynamically
+    isFollowing(data){
+        return axios({url:`${BASE_URL}/check-follow`,data:data,headers:this.getHeader(),method:"POST"})
+    },
+    getFollowNotifications(data){
+        return axios({url:`${BASE_URL}/get-followers`,data:data,headers:this.getHeader(),method:"GET"})
     }
+
+    
 
 }

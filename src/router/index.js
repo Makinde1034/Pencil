@@ -86,6 +86,11 @@ const routes = [
                 next({name:"Signin"})
             }
         }
+    },
+    {
+        path : "/publish",
+        name : "Create post",
+        component : () => import(`@/views/create_article.vue`)
     }
 ]
 

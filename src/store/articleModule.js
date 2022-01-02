@@ -1,5 +1,6 @@
 
 import api from '../adapter/apiServices.js'
+import router from '../router/index.js'
 
 const articleModule = {
     namespaced :true,
@@ -11,7 +12,8 @@ const articleModule = {
                 posts : null,
                 userName : ''
             },
-            likedPosts : null
+            likedPosts : null,
+            deleteId : ""
         }
         
     },
@@ -76,6 +78,42 @@ const articleModule = {
                     console.log(err)
                 })
             })
+        },
+        // publish article
+        publish({commit},data){
+            return new Promise((resolve,reject)=>{
+                api.publish(data).then((res)=>{
+                    console.log(res)
+                    resolve(res)
+                    router.push({name:"Article",params:{id:res.data._id}});
+                    commit("")
+                }).catch(err=>{
+                    console.log(err)
+                    reject(err)
+                })
+            })
+        },
+        deleteArticle({commit,state}){
+            return new Promise((resolve,reject)=>{
+                const data = {
+                    postId : state.deleteId
+                }
+
+                api.deletePost(data).then((res)=>{
+                    console.log(res);
+                    resolve(res);
+                    router.push({name:"Dashbord"})
+                    commit("");
+                }).catch((err)=>{
+                    reject(err);
+                })
+            })
+        },
+        // set delete id
+        setDeleteId({commit},data){
+            commit("setDeleteId",data);
+            console.log(data);
+
         }
     },
     mutations:{
@@ -89,6 +127,9 @@ const articleModule = {
         },
         setLikedPosts(state,likedPosts){
             state.likedPosts = likedPosts
+        },
+        setDeleteId(state,data){
+            state.deleteId  = data
         }
     }
 }

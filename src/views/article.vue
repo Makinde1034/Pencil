@@ -10,14 +10,25 @@
                             <p class="username">{{article.creator}}</p>
                             <p class="date">{{article.createdAt}}</p>
                         </div>
-                        <div v-if="user._id !== article.userId" class="buttons">
-                            <button> +Follow Gerome</button>
-                            <button>Favourite Article ({{article.likes}})</button>
+                        <!-- display if user is authenticated -->
+                        <div v-if="isAuthenticated">
+                            <div v-if="userDetails._id !== article.userId" class="buttons">
+                                <button> +Follow Gerome</button>
+                                <button>Favourite Article ({{article.likes}})</button>
+                            </div>
+                            <!-- can modify -->
+                            <div v-else class="modify">
+                                <button id="edit">Edit article</button>
+                                <button @click="setDelete" id="delete">Delete Article</button>
+                            </div>
                         </div>
-                        <!-- can modify -->
-                        <div v-else class="modify">
-                            <button id="edit">Edit article</button>
-                            <button id="delete">Delete Article</button>
+                        <!-- display if user is unAuthenticated -->
+                        <div v-else>
+                            <div class="buttons">
+                                <button @click="redirectToLogin"> +Follow Gerome</button>
+                                <button @click="redirectToLogin" >Favourite Article ({{article.likes}})</button>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -33,7 +44,7 @@
                 
             />
             <div v-else class="register">
-                <p><router-link :to="{name:'Signin'}"> sign</router-link> in or <router-link :to="{name:'Signup'}"> sign up</router-link> to add a comment on this article</p>
+                <p><router-link :to="{name:'Signin'}"> sign in</router-link> or <router-link :to="{name:'Signup'}"> sign up</router-link> to add a comment on this article</p>
             </div>
             <div  v-for="(comment,index) in article.comments" :key="index" >
                 <Comment 
@@ -63,14 +74,26 @@ export default {
     computed:{
         ...mapState({
             articles : (state) => state.articleModule.globalArticles,
-            user : (state) => state.userModule.user
+            // user : (state) => state.userModule.user
         }),
         isAuthenticated(){
             return storage.isAuthenticated()
+        },
+        userDetails(){
+            return JSON.parse(localStorage.getItem("user"));
         }
     },
     methods:{
-        ...mapActions('articleModule',['getGlobalFeeds']),
+        ...mapActions('articleModule',['getGlobalFeeds',"setDeleteId"]),
+        ...mapActions('toggleModule',['toggleDeleteModal']),
+
+        setDelete(){
+            this.setDeleteId(this.articleId)
+            this.toggleDeleteModal(true)
+        },
+        redirectToLogin(){
+            this.$router.push({name:"Signin"})
+        }
         
     },
     mounted(){
