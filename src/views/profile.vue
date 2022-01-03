@@ -7,7 +7,7 @@
                 </div>
                 <h3>{{user.email}}</h3>
                 <div v-show="currentUser._id !== creator ">
-                    <button v-if="_isFollowing">Unfollow</button>
+                    <button @click="unFollow(user._id)" v-if="_isFollowing">Unfollow</button>
                     <button v-else  @click="follow(user._id)">Follow</button>
                 </div>
                 
@@ -46,7 +46,7 @@ export default {
         }
     },
     methods:{
-        ...mapActions('userModule',['getUserProfile','followUser']),
+        ...mapActions('userModule',['getUserProfile','followUser','unFollowUser']),
         ...mapActions('userModule',['isFollowing']),
         ...mapActions('articleModule',['getUserPosts']),
         ...mapActions('articleModule',['getLikedPosts']),
@@ -58,9 +58,23 @@ export default {
                     userId : _id
                 }
                 this.followUser(data)
+            }else{
+                this.$router.push("/signin")
             }
            
-        }
+        },
+        unFollow(_id){
+            if(storage.isAuthenticated()){
+                const data = {
+                    userId : _id
+                }
+                this.unFollowUser(data)
+            }else{
+                this.$router.push("/signin")
+            }
+           
+        },
+        
     },
     computed:{
         ...mapState({

@@ -11,7 +11,10 @@
                     <p class="date">{{formatDate(post.createdAt)}}</p>
                 </div>
             </div>
-            <div class="likes">{{post.likes}}</div>
+            <div class="likes">
+                <img class="heart" src="../assets/heart.png" alt="">
+                <span>{{post.likes}}</span>
+            </div>
         </div>
         <div @click="goToArticle(post._id)" class="global__feedmain">
             <h3 class="title">{{post.title}}</h3>
@@ -112,6 +115,9 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.heart{
+    height: 14px;
 }
 
 .global__feedmain{

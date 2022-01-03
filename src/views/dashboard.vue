@@ -8,6 +8,7 @@
 
 <script>
 
+import { mapActions } from 'vuex'
 
 import Banner from '../components/banner.vue'
 import Global from '../components/global_feed.vue'
@@ -19,9 +20,11 @@ export default {
         Global
     },
     methods:{
-        
+        ...mapActions('userModule',['getFollowNotifications'])
     },
-    
+    mounted(){
+        this.getFollowNotifications()
+    }
 }
 </script>
 

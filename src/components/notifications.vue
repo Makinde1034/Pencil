@@ -5,6 +5,9 @@
                 <h3>Notifications</h3>
                 <img src="../assets/notification.png" alt="">
             </header>
+            <div class="no__not" v-if="followers.length === 0">
+                <p>You do not have any notification.</p>
+            </div>
             <div v-for="(follower,index) in followers" :key="index"  class="notifications">
                 <img src="../assets/user.png" alt="">
                 <p>{{follower.user.email}} <span>followed</span> you</p>
@@ -30,18 +33,18 @@ export default {
 <style>
 .not{
     height: 100px;
-    /* width: 300px; */
+    width: 300px;
     background: rgb(236, 234, 234);
     position: absolute;
     border-radius: 3px;
     top: 70px;
     right: 200px;
-    padding: 30px;
+    padding: 10px;
     visibility: hidden;
     opacity: 0;
     transition: 0.3s ease-out;
     transform: translateY(10px);
-    overflow-x: scroll;
+    overflow-y: scroll;
 
 }
 
@@ -97,5 +100,15 @@ export default {
     height: 20px;
     width: 20px;
     margin-right: 20px;
+}
+
+.no__not{
+    padding-top: 20px;
+
+}
+
+.no__not p{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
 }
 </style>

@@ -86,7 +86,19 @@ const userModule = {
                 api.followUser(data).then(res=>{
                     console.log(res,"followed")
                     resolve(res)
-                    commit("")
+                    commit("setIsFollowing",true)
+                }).catch(err=>{
+                    reject(err)
+                    console.log(err)
+                })
+            })
+        },
+        unFollowUser({commit},data){
+            return new Promise((resolve,reject)=>{
+                api.unFollowUser(data).then(res=>{
+                    console.log(res,"unfollowed")
+                    resolve(res)
+                    commit("setIsFollowing",false)
                 }).catch(err=>{
                     reject(err)
                     console.log(err)
@@ -149,7 +161,8 @@ const userModule = {
         },
         setFollowers(state,data){
             state.followers = data
-        }
+        },
+        
     }
 }
 

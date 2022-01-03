@@ -67,11 +67,12 @@ const articleModule = {
             })
         },
         // Like a unlike post
-        likeAndUnlikePost({commit},data){
+        likeAndUnlikePost({commit,dispatch},id){
             return new Promise((resolve,reject)=>{
-                api.likeAndUnlike(data).then((res)=>{
+                api.likeAndUnlike(id).then((res)=>{
                     console.log(res)
                     commit("")
+                    dispatch("getGlobalFeeds")
                     resolve(res)
                 }).catch((err)=>{
                     reject(err)

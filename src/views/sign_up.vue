@@ -3,9 +3,9 @@
         <form @submit.prevent="register" class="form" action="">
             <header>Sign up</header>
             <p>Have an account ?</p>
-            <input v-model="userDetails.email"  placeholder="Email" type="text" name="" id="">
-            <input v-model="userDetails.username" placeholder="Username" type="text" name="" id="">
-            <input v-model="userDetails.password"  placeholder="Password" type="password" name="" id="">
+            <input v-model="userDetails.email" required  placeholder="Email" type="text" name="" id="">
+            <input v-model="userDetails.username" required placeholder="Username" type="text" name="" id="">
+            <input v-model="userDetails.password" required  placeholder="Password" type="password" name="" id="">
             <button>Sign up</button>
         </form>
     </div>

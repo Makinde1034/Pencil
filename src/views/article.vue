@@ -13,12 +13,12 @@
                         <!-- display if user is authenticated -->
                         <div v-if="isAuthenticated">
                             <div v-if="userDetails._id !== article.userId" class="buttons">
-                                <button> +Follow Gerome</button>
+                                <button v-if="_isFollowing">Unfollow</button>
+                                <button v-else @click="follow(article.userId)"> +Follow Gerome</button>
                                 <button>Favourite Article ({{article.likes}})</button>
                             </div>
                             <!-- can modify -->
                             <div v-else class="modify">
-                                <button id="edit">Edit article</button>
                                 <button @click="setDelete" id="delete">Delete Article</button>
                             </div>
                         </div>
@@ -76,6 +76,7 @@ export default {
         ...mapState({
             articles : (state) => state.articleModule.globalArticles,
             // user : (state) => state.userModule.user
+            _isFollowing : (state) => state.userModule.isFollowing
         }),
         isAuthenticated(){
             return storage.isAuthenticated()
@@ -87,6 +88,8 @@ export default {
     methods:{
         ...mapActions('articleModule',['getGlobalFeeds',"setDeleteId"]),
         ...mapActions('toggleModule',['toggleDeleteModal']),
+        ...mapActions('userModule',['followUser']),
+        ...mapActions('userModule',['isFollowing']),
 
         setDelete(){
             this.setDeleteId(this.articleId)
@@ -97,11 +100,22 @@ export default {
         },
         formatDate(date){
             return formatDate(date)
+        },
+        follow(id){
+            if(storage.isAuthenticated()){
+                const data = {
+                    userId : id
+                }
+                this.followUser(data)
+            }else{
+                this.$router.push("/signin")
+            }
         }
         
     },
     mounted(){
-        this.getGlobalFeeds()
+        this.getGlobalFeeds();
+        this.isFollowing();
     }
 }
 </script>

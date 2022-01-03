@@ -16,6 +16,7 @@ const routes = [
         path : "/profile/:creator",
         name : "Profile",
         component : () => import(`@/views/profile.vue`),
+        redirect: { name: 'Myarticles' },
         children : [
             {
                 path : "",

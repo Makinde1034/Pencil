@@ -28,8 +28,8 @@ export default {
     postComment(data){
         return axios({url:`${BASE_URL}/add-comment`,data:data,headers:this.getHeader(),method:"POST"});
     },
-    likeAndUnlike(data){
-        return axios({url:`${BASE_URL}/like`,data:data,headers:this.getHeader(),method:"POST"});
+    likeAndUnlike(id){
+        return axios({url:`${BASE_URL}/like/${id}`,headers:this.getHeader(),method:"POST"});
     },
     publish(data){
         return axios({url:`${BASE_URL}/post`,data:data, headers:this.getHeader(), method:"POST"});
@@ -67,6 +67,10 @@ export default {
     // follow a user
     followUser(data){
         return axios({url:`${BASE_URL}/follow`, data:data,headers:this.getHeader(),method:"POST"})
+    },
+    // unfollow
+    unFollowUser(data){
+        return axios({url:`${BASE_URL}/unfollow`, data:data,headers:this.getHeader(),method:"POST"})
     },
     // check if isFollowing to render follow and unfollow buttons dynamically
     isFollowing(data){

@@ -15,8 +15,8 @@
             <router-link v-if="token" to="/publish">New article</router-link>
             <router-link v-if="token" to="/settings">Settings</router-link>
             <!-- <router-link v-if="token" to="/si">{{}}</router-link> -->
-            <p v-if="token">{{userDetails.email}}</p>
-            <img @click="toggleNotModal" src="../assets/notification.png" alt="">
+            <p  v-if="token">{{userDetails.email}}</p>
+            <img  v-if="token" @click="toggleNotModal" src="../assets/notification.png" alt="">
         </ul>
     </nav>
 </template>

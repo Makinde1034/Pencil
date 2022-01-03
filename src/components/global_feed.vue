@@ -22,7 +22,7 @@
                             <p class="date">{{formatDate(article.createdAt)}}</p>
                         </div>
                     </div>
-                    <div @click="likeUnlike(article.userId)" class="likes">
+                    <div @click="likeUnlike(article._id)" class="likes">
                         <img class="heart" src="../assets/heart.png" alt="">
                         <span>{{article.likes}}</span>
                     </div>
@@ -64,10 +64,9 @@ export default {
         
         likeUnlike(id){
             if(storage.isAuthenticated()){
-                const data = {
-                    postId : id
-                }
-                this.likeAndUnlikePost(data)
+               
+                this.likeAndUnlikePost(id)
+                // alert("Action denied due to cross origin resource sharing policy")
             }else{
                 this.$router.push({name:"Signin"})
             }
