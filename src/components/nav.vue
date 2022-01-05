@@ -9,14 +9,72 @@
              </router-link>
         </div>
         <ul class="nav__ul">
-            <router-link to="/">Home</router-link>
-            <router-link v-if="!token" to="/signin">Sign in</router-link>
-            <router-link v-if="!token" to="/signup">Sign up</router-link>
-            <router-link v-if="token" to="/publish">New article</router-link>
-            <router-link v-if="token" to="/settings">Settings</router-link>
+            <router-link 
+                to="/"
+            >
+            Home
+            </router-link>
+            <router-link 
+                v-if="!token" 
+                to="/signin"
+            >
+            Sign in
+            </router-link>
+            <router-link 
+                v-if="!token" 
+                to="/signup"
+            >
+            Sign up
+            </router-link>
+            <router-link 
+                v-if="token" 
+                to="/publish"
+            >
+            New article
+            </router-link>
+            <router-link 
+                v-if="token" 
+                to="/settings"
+            >
+            Settings
+            </router-link>
             <!-- <router-link v-if="token" to="/si">{{}}</router-link> -->
             <p  v-if="token">{{userDetails.email}}</p>
             <img  v-if="token" @click="toggleNotModal" src="../assets/notification.png" alt="">
+        </ul>
+        <!-- mobile -->
+        <ul class="nav__ul2">
+            <router-link
+                to="/"
+                v-if="token"
+            >
+                <img src="../assets/home.png" alt="">
+            </router-link>
+            <li 
+                @click="toggleNotModal" 
+                v-if="token"
+            >
+                <img src="../assets/notification2.png" alt="">
+            </li>
+            <router-link
+                to="/settings"
+                v-if="token"
+            >
+                <img src="../assets/settings.png" alt="">
+            </router-link>
+            <!--  -->
+            <router-link
+                to="/signin"
+                v-if="!token"
+            >
+                Sign in
+            </router-link>
+            <router-link
+                to="/signup"
+                v-if="!token"
+            >
+                Sign up
+            </router-link>
         </ul>
     </nav>
 </template>
@@ -24,6 +82,7 @@
 <script>
 
 import { mapState,mapActions } from 'vuex'
+import storage from '../helpers/storage.js'
 
 export default {
     components:{},
@@ -34,8 +93,14 @@ export default {
     },
     methods:{
         ...mapActions('toggleModule',['toggleNotificationModal']),
+
         toggleNotModal(){
-            this.toggleNotificationModal()
+            if(storage.isAuthenticated()){
+                this.toggleNotificationModal()
+            }else{
+                this.$router.push({name:"Signin"})
+            }
+            
         }
 
     },
@@ -65,6 +130,9 @@ export default {
     
 }
 
+
+
+
 .logo{
     color:#008081;
     text-decoration: none;
@@ -81,7 +149,7 @@ export default {
 
 }
 
-.nav__ul a,p{
+.nav__ul a,p, .nav__ul2 a,p{
     padding: 0px 20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 14px;
@@ -100,18 +168,53 @@ export default {
     cursor: pointer;
 }
 
-@media  screen and (max-width:480px){
-    .logo{
+.menu{
+    display: none;
+}
+
+.nav__ul2{
+    display: none;
+}
+
+@media  screen and (max-width:768px){
+    /* .logo{
         margin-bottom: 20px;
-    }
+    } */
     .nav{
-        padding-top: 20px;
-        padding-bottom: 20px;
         padding-left: 20px;
         padding-right: 20px;
-        flex-direction: column;
-        height: auto;
+        
+    }
+
+    .nav__ul{
+        display: none;
+    }
+
+    .menu{
+        display: block;
+    }
+
+    .nav__ul2{
+        display: block;
+    }
+
+    .nav__ul2{
+        display: flex;
+        list-style-type: none;
+        align-items: center;
+    }
+
+    .nav__ul2 li{
+        margin: 0px 20px 0px 20px;
+    }
+
+
+    .nav__ul2 img{
+        height: 18px;
+       
     }
 }
+
+
 
 </style>

@@ -146,4 +146,16 @@ export default {
     }
 
 }
+
+@media  screen and (min-width:480px) and (max-width:768px){
+    .signup{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .form{
+        width:50%;
+    }
+
+}
 </style>

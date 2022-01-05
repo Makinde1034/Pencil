@@ -42,8 +42,8 @@ export default {
     padding: 10px;
     visibility: hidden;
     opacity: 0;
-    transition: 0.3s ease-out;
-    transform: translateY(10px);
+    transition: 0.1s ease-out;
+    transform: translateX(10px);
     overflow-y: scroll;
 
 }
@@ -51,7 +51,7 @@ export default {
 .not__active{
     visibility: visible;
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateX(0px);
 }
 
 .not header{
@@ -110,5 +110,19 @@ export default {
 .no__not p{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 12px;
+}
+
+
+@media  screen and (max-width:768px){
+
+    .not{
+        height: 100px;
+        width: 90%;
+        margin: auto;
+        right: 10px;
+       
+      
+    }
+
 }
 </style>

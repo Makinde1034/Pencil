@@ -93,4 +93,12 @@ export default {
 }
 
 
+@media  screen and (max-width:768px){
+    .comment{
+        max-width: 100%;
+    }
+
+}
+
+
 </style>

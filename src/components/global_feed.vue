@@ -205,7 +205,7 @@ export default {
     margin-top: 30px;
 }
 
-@media  screen and (max-width:480px){
+@media  screen and (max-width:768px){
     .wrap{
         padding-left:20px;
         padding-right:20px;

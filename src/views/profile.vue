@@ -6,11 +6,13 @@
                     <img :src="user.image" alt="">
                 </div>
                 <h3>{{user.email}}</h3>
-                <div v-show="currentUser._id !== creator ">
+                <div style="margin-bottom:30px" v-show="currentUser._id !== creator">
                     <button @click="unFollow(user._id)" v-if="_isFollowing">Unfollow</button>
                     <button v-else  @click="follow(user._id)">Follow</button>
                 </div>
-                
+                <div class="bio">
+                    <p>{{user.bio}}</p>
+                </div>
                
                 
             </div>
@@ -99,6 +101,8 @@ export default {
 <style scoped>
 .banner{
     height: 300px;
+    /* max-height: auto; */
+    padding-top: 30px;
     background: #008081;
     display: flex;
     justify-content: center;
@@ -115,7 +119,7 @@ export default {
 
 .banner h3{
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: white;
     font-size: 30px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -134,6 +138,17 @@ export default {
     padding-left: 300px;
     padding-right: 300px;
     /* height: 50px; */
+}
+
+.bio {
+    padding: 20px 20px 20px 20px;
+
+}
+
+.bio p{
+    color: white;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 
@@ -168,10 +183,14 @@ a{
     
 }
 
-@media  screen and (max-width:480px){
+@media  screen and (max-width:768px){
     .wrap{
         padding-left:20px;
         padding-right:20px;
+    }
+
+    .banner{
+        height: auto;
     }
 
     .articles{

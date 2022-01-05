@@ -2,14 +2,19 @@
     <div  v-for="(article,index) in articles" :key="index" >
         <div style="padding-bottom:100px" v-if="article._id === articleId">
             <div class="banner">
-                <div class="title">{{article.title}}</div>
+                <div class="title">
+                    <h3>{{article.title}}</h3>
+                </div>
                 <div class="user__details">
                     <div class="user__details__info">
-                        <img src="../assets/user.png" alt="User image">
-                        <div class="username__date">
-                            <p class="username">{{article.creator}}</p>
-                            <p class="date">{{formatDate(article.createdAt)}}</p>
+                        <div class="user__details__">
+                            <img src="../assets/user.png" alt="User image">
+                            <div class="username__date">
+                                <p class="username">{{article.creator}}</p>
+                                <p class="date">{{formatDate(article.createdAt)}}</p>
+                            </div>
                         </div>
+                        
                         <!-- display if user is authenticated -->
                         <div v-if="isAuthenticated">
                             <div v-if="userDetails._id !== article.userId" class="buttons">
@@ -28,7 +33,6 @@
                                 <button @click="redirectToLogin"> +Follow Gerome</button>
                                 <button @click="redirectToLogin" >Favourite Article ({{article.likes}})</button>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -38,15 +42,16 @@
                     <p>{{article.body}}</p>
                 </div>
             </div>
-            <CommentEditor
+            <div style="padding-left:20px;padding-right:20px"   v-if="isAuthenticated">
+                <CommentEditor
                 :articleId="articleId"
-                v-if="isAuthenticated"
-                
             />
+            </div>
+           
             <div v-else class="register">
                 <p><router-link :to="{name:'Signin'}"> sign in</router-link> or <router-link :to="{name:'Signup'}"> sign up</router-link> to add a comment on this article</p>
             </div>
-            <div  v-for="(comment,index) in article.comments" :key="index" >
+            <div  style="padding-left:20px;padding-right:20px"  v-for="(comment,index) in article.comments" :key="index" >
                 <Comment 
                     :comment = "comment" 
                     :creator ="article.creator"
@@ -121,6 +126,7 @@ export default {
 </script>
 
 <style scoped>
+
 .banner{
     padding-bottom:30px;
     padding-top:30px;
@@ -131,7 +137,7 @@ export default {
     justify-content: center;
 }
 
-.title{
+.title h3{
     font-size: 50px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: white;
@@ -226,17 +232,61 @@ export default {
     text-decoration: none;
 }
 
-@media  screen and (max-width:480px){
+@media  screen and (max-width:768px){
+   
     .banner{
         padding-left:20px
     }
 
-    .body{
-        padding: 20px 0px 20px 20px;
+    .user__details__info{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
     }
+
+    .user__details__{
+        display: flex;
+        align-items: center;
+       
+    }
+
+
+    .username__date{
+        margin-bottom: 20px;
+    }
+
+    .buttons button, .modify button{
+        padding: 5px 5px;
+    }
+
+
+    .body{
+        padding: 20px 20px 20px 20px;
+    }
+
+
     .body__text{
         width: 100%;
 
+    }
+    
+    .body__text p{
+        font-size: 1.2rem;
+        line-height: 2rem;
+    }
+
+
+    .title h3{
+        font-size: 25px;
+    }
+
+    .register{
+        width: 100%;
+        padding-left: 20px;
+    }
+
+    .register p{
+        text-align: center;
     }
 
 
