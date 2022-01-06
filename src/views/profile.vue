@@ -141,7 +141,7 @@ export default {
 }
 
 .bio {
-    padding: 20px 20px 20px 20px;
+    padding: 0px 20px 20px 20px;
 
 }
 
@@ -191,6 +191,10 @@ a{
 
     .banner{
         height: auto;
+    }
+
+    .banner h3{
+        font-size: 20px;
     }
 
     .articles{

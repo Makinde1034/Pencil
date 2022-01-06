@@ -11,7 +11,71 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app">
+      <div class="main">
+        <h4>Pencil</h4>
+        <div class="line">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
     <!-- built files will be auto injected -->
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+
+      }
+
+      .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .main h4{
+        font-size: 40px;
+        margin-bottom: 10px;
+        color: #008081;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      .line{
+        height: 2px;
+        width: 200px;
+        background-color: #008081;;
+        border-radius: 5px;
+        
+      }
+
+      .circle{
+        height: 100%;
+        width: 50px;
+        background-color: white;
+        animation: move 0.5s  infinite linear alternate;
+      }
+
+      @keyframes move {
+        0%{
+          transform: translateX(0px);
+          
+        }
+        50%{
+          transform: translateX(100px);
+        }
+        100%{
+          transform: translateX(200px);
+        
+        }
+      }
+
+      
+    </style>
+
   </body>
+
+  
+
 </html>
