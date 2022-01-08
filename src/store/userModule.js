@@ -24,9 +24,11 @@ const userModule = {
     actions: {
         signUp({commit},data){
             return new Promise((resolve,reject)=>{
+                commit("authRequest");
                 api.signUp(data).then((res)=>{
                     console.log(res)
                     resolve(res)
+                    commit("authSuccess")
                     commit("setVerificationMessage",res.data.message);
                     router.push("/verification")
                 }).catch((err)=>{
@@ -37,13 +39,13 @@ const userModule = {
         signIn({commit},data){
             
             return new Promise((resolve,reject)=>{
-                commit("signInRequest");
+                commit("authRequest");
                 api.signIn(data).then((res)=>{
                     resolve(res)
                     console.log(res)
                     storage.saveToken(res.data.token)
                     storage.setUserDetails(res.data.user)
-                    commit("signInSuccess",res.data.token)
+                    commit("authSuccess",res.data.token)
                     router.push("/dashboard")
                     
                 }).catch((err)=>{
@@ -140,11 +142,11 @@ const userModule = {
         setVerificationMessage(state,message){
             state.verificationMessage = message
         },
-        signInRequest(state){
+        authRequest(state){
             state.signInLoading = true
             state.errMsg = ''
         },
-        signInSuccess(state,token){
+        authSuccess(state,token){
             state.token = token
             state.signInLoading = false
         },

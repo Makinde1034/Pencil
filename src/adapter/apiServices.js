@@ -56,9 +56,18 @@ export default {
     // update user profile
     updateProfile(data){
         // return axios({url:`${BASE_URL}/update-profile`,data, headers:this.getHeader(),method:"POST"})
-        return axios.post(`${BASE_URL}/update-profile`, data, { 
+        // return axios(`${BASE_URL}/update-profile`, data, { 
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data',
+        //         'x-access-token': localStorage.getItem("token")
+        //     }
+        // })
+
+        return axios({
+            method: 'post',
+            url: `${BASE_URL}/update-profile`,
+            data: data,
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'x-access-token': localStorage.getItem("token")
             }

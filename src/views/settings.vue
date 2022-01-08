@@ -6,8 +6,8 @@
                     class="custom-file-input" 
                     placeholder="Enter URL to your avarter" 
                     size="60"  
-                    type="text"
-                    v-model="profile.image"
+                    type="file"
+                    @change="getFile($event)"
                     required
                     
                 >
@@ -49,20 +49,27 @@ export default {
                 image : "",
                 username : "",
                 bio : "",
-            }
+            },
+            
         }
     },
     methods:{
         ...mapActions('userModule',['updateUserProfile']),
         ...mapActions('userModule',['logout']),
         getFile(event){
-            this.profile.image = event.target.files
-
+            const reader = new FileReader();
+            // let rawImg;
+            reader.onloadend = () => {
+                this.profile.image = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
         },
+
         update(){
             this.updateUserProfile(this.profile);
             // alert("Profile update coming soon")
         },
+
         signOut(){
             this.logout()
         }

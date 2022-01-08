@@ -2,7 +2,7 @@
     <div  class="signup">
         <form @submit.prevent="register" class="form" action="">
             <header>Sign up</header>
-            <p>Have an account ?</p>
+            <router-link to="/signin" class="form_p">Have an account ?</router-link>
             <input v-model="userDetails.email" required  placeholder="Email" type="text" name="" id="">
             <input v-model="userDetails.username" required placeholder="Username" type="text" name="" id="">
             <input v-model="userDetails.password" required  placeholder="Password" type="password" name="" id="">
@@ -70,9 +70,17 @@ export default {
     margin-bottom: 20px;
 }
 
-.form header{
-    font-size: 40px;
+.form_p{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 10px;
+    color: #008081;
+    margin-bottom: 20px;
+}
+
+.form header{
+    font-size: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
 }
 
 .form input{

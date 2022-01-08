@@ -3,10 +3,10 @@
         <div v-if="user._id===creator">
             <div class="banner">
                 <div class="image">
-                    <img :src="user.image" alt="">
+                    <img :src="user.image" alt="profile image">
                 </div>
                 <h3>{{user.email}}</h3>
-                <div style="margin-bottom:30px" v-show="currentUser._id !== creator">
+                <div v-if="isAuth" style="margin-bottom:30px" v-show="currentUser._id !== creator">
                     <button @click="unFollow(user._id)" v-if="_isFollowing">Unfollow</button>
                     <button v-else  @click="follow(user._id)">Follow</button>
                 </div>
@@ -77,6 +77,7 @@ export default {
            
         },
         
+        
     },
     computed:{
         ...mapState({
@@ -85,6 +86,9 @@ export default {
         }),
         currentUser(){
             return JSON.parse(localStorage.getItem("user"));
+        },
+        isAuth(){
+            return storage.isAuthenticated()
         }
     },
     mounted(){
@@ -92,9 +96,12 @@ export default {
         this.getUserProfile();
         this.getUserPosts(this.creator)
         this.getLikedPosts(this.creator)
-        this.isFollowing(this.creator)
+        if(storage.isAuthenticated()){
+            this.isFollowing(this.creator)
+        }
+        
        
-    }
+    },
 }
 </script>
 
@@ -114,7 +121,12 @@ export default {
     height: 100px;
     width: 100px;
     border-radius: 50%;
-    background: white;
+}
+
+.image img{
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
 }
 
 .banner h3{
@@ -142,6 +154,7 @@ export default {
 
 .bio {
     padding: 0px 20px 20px 20px;
+    width: 50%;
 
 }
 

@@ -2,7 +2,7 @@
     <div class="signup">
         <form  @submit.prevent="login" class="form" action="">
             <header>Sign In</header>
-            <p class="form_p">Don't have an account?</p>
+            <router-link to="/signup" class="form_p">Don't have an account?</router-link>
             <input
                 v-model="userDetails.email"
                 placeholder="Email"
@@ -69,7 +69,7 @@ export default {
 .signup h3{
     text-align: center;
     font-size: 30px;
-    font-weight: 700;
+    
 }
 
 .form{
@@ -88,8 +88,9 @@ export default {
 }
 
 .form header{
-    font-size: 40px;
+    font-size: 30px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
 }
 
 .form input{

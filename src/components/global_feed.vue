@@ -3,7 +3,7 @@
         <div class="global">
             <div class="global__header">
                 <div class="global__header__title">
-                    <h3>Global feed</h3>
+                    <h3>Global feeds</h3>
                 </div>
             </div>
             <div v-if="loading"><Skeleton /></div>
@@ -11,7 +11,7 @@
                 <div class="global__feedtop">
                     <div class="image__username__date">
                         <div class="image">
-                            <img src="../assets/user.png" alt="">
+                            <img :src="article.creatorImage" alt="">
                         </div>
                         <div class="username__date">
                             <p class="username"
@@ -190,6 +190,7 @@ export default {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 25px;
     cursor: pointer;
+    margin-bottom: 10px;
 
 }
 
