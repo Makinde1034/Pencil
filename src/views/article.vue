@@ -273,7 +273,7 @@ export default {
     }
     
     .body__text p{
-        font-size: 1.2rem;
+        font-size: 1rem;
         line-height: 2rem;
     }
 

@@ -6,7 +6,7 @@
                     <h3>Global feeds</h3>
                 </div>
             </div>
-                <PublishField />
+                <PublishField v-if="isAuthenticated" />
             <div v-if="loading"><Skeleton /></div>
             <div v-else v-for="article in globalArticles" :key="article._id" class="global__feedbody">
                 <div class="global__feedtop">
@@ -84,7 +84,11 @@ export default {
         ...mapState({
             globalArticles : (state)=> state.articleModule.globalArticles,
             loading : (state) => state.articleModule.globalArticlesLoading
-        })
+        }),
+
+        isAuthenticated(){
+            return storage.isAuthenticated()
+        }
     },
     mounted(){
         this.getGlobalFeeds()
