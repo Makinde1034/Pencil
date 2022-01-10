@@ -151,6 +151,7 @@ export default {
 .user__details__info img{
     height: 30px;
     margin-right: 10px;
+    border-radius: 50%;
 }
 
 .user__details__info{
@@ -181,7 +182,7 @@ export default {
     border: 2px solid #008081;
     background: none;
     color: #AAAAAA;
-    font-size: 16px;
+    font-size: 12px;
     border-radius: 3px;
     cursor: pointer;
     
@@ -224,7 +225,8 @@ export default {
 }
 
 .register p{
-    font-size: 20px;
+    font-size: 16px;
+    text-align: center;
 }
 
 .register a{
@@ -284,6 +286,8 @@ export default {
         width: 100%;
         padding-left: 20px;
     }
+
+    
 
     .register p{
         text-align: center;

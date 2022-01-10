@@ -39,7 +39,7 @@
             Settings
             </router-link>
             <!-- <router-link v-if="token" to="/si">{{}}</router-link> -->
-            <p  v-if="token">{{userDetails.email}}</p>
+            <p @click="goToProfile(userDetails._id)"  v-if="token">{{userDetails.email}}</p>
             <img  v-if="token" @click="toggleNotModal" src="../assets/notification.png" alt="">
         </ul>
         <!-- mobile -->
@@ -101,6 +101,9 @@ export default {
                 this.$router.push({name:"Signin"})
             }
             
+        },
+        goToProfile(_id){
+            this.$router.push({name:"Profile",params:{creator:_id}})
         }
 
     },

@@ -14,7 +14,7 @@ const userModule = {
             token : storage.getToken() || '',
             verificationMessage : "",
             user : storage.getUserDetails() || '',
-            signInLoading : false,
+            authLoading : false,
             errorMessage : '',
             isFollowing : null,
             followers : null
@@ -26,13 +26,15 @@ const userModule = {
             return new Promise((resolve,reject)=>{
                 commit("authRequest");
                 api.signUp(data).then((res)=>{
-                    console.log(res)
+                    console.log(res.data)
                     resolve(res)
                     commit("authSuccess")
                     commit("setVerificationMessage",res.data.message);
                     router.push("/verification")
                 }).catch((err)=>{
-                    reject(err.msg)
+                    reject(err.response.data.errors)
+                    const errorMsg = err.response.data.errors
+                    commit("authFailure",errorMsg)
                 })
             })
         },
@@ -52,7 +54,7 @@ const userModule = {
                     reject(err)
                     console.log(err.response)
                     const errorMsg = err.response.data.msg
-                    commit("signInFailure",errorMsg)
+                    commit("authFailure",errorMsg)
                 })
             })
         },
@@ -60,7 +62,7 @@ const userModule = {
             return new Promise((resolve,reject)=>{
                 api.userProfile().then((res)=>{
                    resolve(res)
-                   commit("setUserProfile",res.data)
+                   commit("setUserProfile",res.data)               
                 }).catch(err=>{
                     reject(err)
                 })
@@ -143,15 +145,15 @@ const userModule = {
             state.verificationMessage = message
         },
         authRequest(state){
-            state.signInLoading = true
+            state.authLoading = true
             state.errMsg = ''
         },
         authSuccess(state,token){
             state.token = token
-            state.signInLoading = false
+            state.authLoading = false
         },
-        signInFailure(state,errMsg){
-            state.signInLoading = false
+        authFailure(state,errMsg){
+            state.authLoading = false
             state.errorMessage = errMsg
         },
         logout(state){

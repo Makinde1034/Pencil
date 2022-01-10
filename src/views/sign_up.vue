@@ -6,22 +6,28 @@
             <input v-model="userDetails.email" required  placeholder="Email" type="text" name="" id="">
             <input v-model="userDetails.username" required placeholder="Username" type="text" name="" id="">
             <input v-model="userDetails.password" required  placeholder="Password" type="password" name="" id="">
-            <button>Sign up</button>
+            <button>
+                <Loader v-if="loading" />
+                <p v-else>Sign up</p>
+            </button>
+            <p style="margin-top:20px;color:red">{{errMsg}}</p>
         </form>
     </div>
 </template>
 
 <script>
+import Loader from '../components/loader.vue'
 
-import { mapActions } from 'vuex'
+import { mapActions,mapState } from 'vuex'
 
 export default {
+    components:{ Loader },
     data(){
         return{
             userDetails:{
                 email : "",
                 username : "",
-                password : ""
+                password : "",    
             }
         }
     },
@@ -35,7 +41,10 @@ export default {
         
     },
     computed:{
-        
+        ...mapState({
+            loading : (state)=>state.userModule.authLoading,
+            errMsg : (state)=>state.userModule.errorMessage
+        })
     },
     
 }
@@ -108,6 +117,10 @@ export default {
     border: none;
     font-size: 18px;
     border-radius: 3px;
+}
+
+.form button p{
+    color: white;
 }
 
 @media  screen and (max-width:480px){

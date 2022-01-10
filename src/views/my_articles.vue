@@ -1,10 +1,11 @@
 <template>
-  <div v-if="loading">Loading article...</div>
+    <!-- <div v-if="loading">Loading article...</div> -->
+    <div style="font-size:12px;margin-top:10px" v-if="userPosts.posts.length === 0">You have not published any article.</div>
     <div style="padding-bottom:80px" v-else v-for="(post,index) in userPosts.posts" :key="index" class="global__feedbody">
         <div class="global__feedtop">
             <div class="image__username__date">
                 <div class="image">
-                    <img src="../assets/logo.png" alt="">
+                    <img :src="post.creatorImage" alt="">
                 </div>
                 <div class="username__date">
                     <p @click="getUser(userPosts.creator)"  class="username">{{userPosts.userName}}</p>
@@ -74,6 +75,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 
@@ -128,6 +130,7 @@ export default {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 25px;
     margin-bottom: 20px;
+    cursor: pointer;
 
 }
 

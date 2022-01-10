@@ -49,7 +49,7 @@ export default {
     },
     computed:{
         ...mapState({
-            loading : (state)=>state.userModule.signInLoading,
+            loading : (state)=>state.userModule.authLoading,
             errMsg : (state)=>state.userModule.errorMessage
         }),
         

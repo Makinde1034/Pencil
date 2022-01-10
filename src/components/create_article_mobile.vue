@@ -1,10 +1,13 @@
 <template>
-    <router-link to="/publish" v-if="isAuthenticated" >
-        <div class="publish">
-            <img :src="user.image" alt="">
-            <input type="text">
-        </div>
-    </router-link>
+    <div class="wrap">
+        <router-link to="/publish" v-if="isAuthenticated" >
+            <div class="publish">
+                <img :src="user.image" alt="">
+                <input type="text">
+            </div>
+        </router-link>
+    </div>
+    
     
 </template>
 
@@ -30,12 +33,15 @@ export default {
 </script>
 
 <style scoped>
+.wrap{
+    display: none;
+}
 .publish{
     width: 100%;
     display: flex;
     align-items: center;
     padding-top: 20px;
-    display: none;
+   
     
 }
 
@@ -46,7 +52,7 @@ export default {
 
 .publish input {
     max-width: 500px ;
-    width: 500px;
+    width: 300px;
     height: 80px;
     border: 1px solid gainsboro;
     border-radius: 50px;
@@ -54,7 +60,7 @@ export default {
 }
 
 @media screen and (max-width:480px) {
-    .publish{
+    .wrap{
         display: block;
     }
 }
