@@ -2,15 +2,22 @@
     <div class="settings">
         <form @submit.prevent="update"  enctype="multipart/form-data">
             <fieldset>
-                <input 
-                    class="custom-file-input" 
-                    placeholder="Enter URL to your avarter" 
-                    size="60"  
-                    type="file"
-                    @change="getFile($event)"
-                    required
-                    
-                >
+                <div class="image">
+                    <label  class="custom-file-upload">
+                        <input 
+                            placeholder="Enter URL to your avarter" 
+                            size="60"  
+                            type="file"
+                            @change="getFile($event)"
+                            required
+                            
+                        >
+                        <img class="user-image" :src="presentImage" alt="">
+                        <img class="image-icon" src="../assets/photo-camera.png" alt="">
+                    </label>
+                </div>
+               
+               
                 <input 
                     placeholder="Enter your username" 
                     type="text"
@@ -50,6 +57,8 @@ export default {
                 username : "",
                 bio : "",
             },
+
+            presentImage : JSON.parse(localStorage.getItem("user")).image
             
         }
     },
@@ -61,6 +70,7 @@ export default {
             // let rawImg;
             reader.onloadend = () => {
                 this.profile.image = reader.result;
+                this.presentImage = reader.result
             }
             reader.readAsDataURL(event.target.files[0]);
         },
@@ -74,6 +84,11 @@ export default {
             this.logout()
         }
         
+    },
+    computed:{
+        user(){
+            return JSON.parse(localStorage.getItem("user"));
+        },
     }
 }
 </script>
@@ -151,6 +166,38 @@ export default {
     font-weight: 600;
     cursor: pointer;
     transition: 0.5s;
+}
+
+.image{
+    display: flex;
+    justify-content: center;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.user-image{
+    height: 100%;
+    width: 100%;
+}
+
+.image-icon{
+    position : absolute;
+    height: 20px;
+    width: 20px;
+    bottom: 0px;
+    right: 0px;
+}
+
+input[type="file"] {
+    display: none;
 }
 
 .logout button:hover{

@@ -8,7 +8,7 @@
                 <div class="user__details">
                     <div class="user__details__info">
                         <div class="user__details__">
-                            <img src="../assets/user.png" alt="User image">
+                            <img :src="article.creatorImage" alt="User image">
                             <div class="username__date">
                                 <p class="username">{{article.creator}}</p>
                                 <p class="date">{{formatDate(article.createdAt)}}</p>

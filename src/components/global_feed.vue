@@ -6,6 +6,7 @@
                     <h3>Global feeds</h3>
                 </div>
             </div>
+                <PublishField />
             <div v-if="loading"><Skeleton /></div>
             <div v-else v-for="article in globalArticles" :key="article._id" class="global__feedbody">
                 <div class="global__feedtop">
@@ -42,10 +43,12 @@ import { mapState,mapActions } from 'vuex'
 import storage from '../helpers/storage'
 import Skeleton from './skeleton.vue'
 import {formatDate} from '../helpers/date.js'
+import PublishField from '../components/create_article_mobile.vue'
 
 export default {
     components:{
-        Skeleton
+        Skeleton,
+        PublishField
     },
     data(){
         return {

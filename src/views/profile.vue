@@ -206,6 +206,10 @@ a{
         height: auto;
     }
 
+    .bio{
+        width: 100%;
+    }
+
     .banner h3{
         font-size: 20px;
     }

@@ -97,5 +97,19 @@ export default {
 }
 
 
+@media  screen and (max-width:480px){
+
+    .publish{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .publish form {  
+        width: 100%;
+    }
+
+}
+
+
 
 </style>
