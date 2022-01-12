@@ -18,7 +18,7 @@
             </div>
         </div>
         <div @click="goToArticle(post._id)" class="global__feedmain">
-            <h3 class="title">{{post.title}}</h3>
+            <h3 class="title">{{post.title> 100 ? article.body.substring(0,100)+"..." : article.body}}</h3>
             <p class="body">{{post.body}}</p>
         </div>
     </div>

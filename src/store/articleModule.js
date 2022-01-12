@@ -13,7 +13,11 @@ const articleModule = {
                 userName : ''
             },
             likedPosts : null,
-            deleteId : ""
+            deleteId : "",
+            toast :{
+                isActive : false,
+                msg : ""
+            }
         }
         
     },
@@ -87,7 +91,7 @@ const articleModule = {
                     console.log(res)
                     resolve(res)
                     router.push({name:"Article",params:{id:res.data._id}});
-                    commit("")
+                    commit("setToastActive");
                 }).catch(err=>{
                     console.log(err)
                     reject(err)
@@ -131,6 +135,10 @@ const articleModule = {
         },
         setDeleteId(state,data){
             state.deleteId  = data
+        },
+        setToastActive(state){
+            state.toast.isActive = true
+            state.toast.msg = "Article successfully published"
         }
     }
 }

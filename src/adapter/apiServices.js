@@ -73,17 +73,32 @@ export default {
             }
         })
     },
+    getUserProfile(){
+        return axios({
+            url : `${BASE_URL}/getUserProfile`,
+            method : "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': localStorage.getItem("token")
+            }
+        })
+    },
     // follow a user
     followUser(data){
         return axios({url:`${BASE_URL}/follow`, data:data,headers:this.getHeader(),method:"POST"})
     },
     // unfollow
     unFollowUser(data){
-        return axios({url:`${BASE_URL}/unfollow`, data:data,headers:this.getHeader(),method:"POST"})
+        return axios({
+            url:`${BASE_URL}/unfollow`, data:data,headers:this.getHeader(),method:"POST"})
     },
     // check if isFollowing to render follow and unfollow buttons dynamically
     isFollowing(data){
-        return axios({url:`${BASE_URL}/check-follow`,data:data,headers:this.getHeader(),method:"POST"})
+        return axios({
+            url:`${BASE_URL}/check-follow`,
+            data:data,headers:this.getHeader(),
+            method:"POST"
+        })
     },
     getFollowNotifications(data){
         return axios({url:`${BASE_URL}/get-followers`,data:data,headers:this.getHeader(),method:"GET"})

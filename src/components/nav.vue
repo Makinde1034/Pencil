@@ -129,6 +129,14 @@ export default {
     padding-left: 200px;
     padding-right: 200px;
     height: 60px;
+     user-select: none;
+  /* overflow-x: hidden; */
+   -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
 
     
 }
@@ -160,6 +168,8 @@ export default {
     cursor: pointer;
     color: rgb(184, 180, 180);
     text-decoration: none;
+    user-select: none;
+  
 }
 
 .nav__ul a:hover,p:hover{

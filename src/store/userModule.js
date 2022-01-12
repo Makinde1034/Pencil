@@ -49,6 +49,7 @@ const userModule = {
                     storage.setUserDetails(res.data.user)
                     commit("authSuccess",res.data.token)
                     router.push("/dashboard")
+                    // commit("setUserDetails")
                     
                 }).catch((err)=>{
                     reject(err)
@@ -68,15 +69,16 @@ const userModule = {
                 })
             })
         },
-        updateUserProfile({commit},data){
+        updateUserProfile({commit,dispatch},data){
             return new Promise((resolve,reject)=>{
                 api.updateProfile(data).then((res)=>{
                     resolve(res)
+                    dispatch("fetchUserProfile")
                     commit("")
-                    console.log(res)
+                    console.log(res.data)
                 }).catch((err)=>{
                     reject(err)
-                    console.log(err.message)
+                    console.log(err.response)
                 })
             })
         },
@@ -133,6 +135,18 @@ const userModule = {
                 }).catch((err)=>{
                     console.log(err)
                     reject(err)
+                })
+            })
+        },
+        fetchUserProfile(){
+            return new Promise((resolve,reject)=>{
+                api.getUserProfile().then((res)=>{
+                    resolve(res)
+                    console.log(res.data,"fetched user profile after update")
+                    storage.setUserDetails(res.data)
+                }).catch((err)=>{
+                    reject(err)
+                    console.log(err)
                 })
             })
         }

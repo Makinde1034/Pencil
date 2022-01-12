@@ -71,8 +71,10 @@ export default {
             reader.onloadend = () => {
                 this.profile.image = reader.result;
                 this.presentImage = reader.result
+
             }
             reader.readAsDataURL(event.target.files[0]);
+            
         },
 
         update(){
@@ -186,6 +188,7 @@ export default {
 .user-image{
     height: 100%;
     width: 100%;
+    border-radius : 50%;
 }
 
 .image-icon{
@@ -193,7 +196,7 @@ export default {
     height: 20px;
     width: 20px;
     bottom: 0px;
-    right: 0px;
+    right: -4px;
 }
 
 input[type="file"] {

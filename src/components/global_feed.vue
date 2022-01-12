@@ -6,7 +6,7 @@
                     <h3>Global feeds</h3>
                 </div>
             </div>
-                <PublishField v-if="isAuthenticated" />
+                <!-- <PublishField v-if="isAuthenticated" /> -->
             <div v-if="loading"><Skeleton /></div>
             <div v-else v-for="article in globalArticles" :key="article._id" class="global__feedbody">
                 <div class="global__feedtop">
@@ -43,12 +43,12 @@ import { mapState,mapActions } from 'vuex'
 import storage from '../helpers/storage'
 import Skeleton from './skeleton.vue'
 import {formatDate} from '../helpers/date.js'
-import PublishField from '../components/create_article_mobile.vue'
+// import PublishField from '../components/create_article_mobile.vue'
 
 export default {
     components:{
         Skeleton,
-        PublishField
+        // PublishField
     },
     data(){
         return {
@@ -141,6 +141,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
 
 
@@ -149,7 +150,7 @@ export default {
     display: flex;
     align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    padding-top: 30px;
+    /* padding-top: 30px; */
 }
 
 .image{

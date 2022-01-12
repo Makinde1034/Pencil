@@ -3,9 +3,11 @@
   <router-view></router-view>
   <Footer />
   <!-- modal && components -->
+    <!-- <Toast /> -->
   <DeleteModal />
   <Background />
-  <notifications />
+  <Notifications />
+
 </template>
 
 <script>
@@ -15,6 +17,7 @@ import Footer from './components/footer.vue'
 import DeleteModal from './components/delete_modal.vue'
 import Background from './components/background.vue'
 import Notifications from './components/notifications.vue'
+// import Toast from './components/toast.vue'
 
 export default {
   name: 'App',
@@ -23,7 +26,8 @@ export default {
     Footer,
     DeleteModal,
     Background,
-    Notifications
+    Notifications,
+    // Toast
 
   }
 }

@@ -152,6 +152,7 @@ export default {
     height: 30px;
     margin-right: 10px;
     border-radius: 50%;
+    display: inline;
 }
 
 .user__details__info{
