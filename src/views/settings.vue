@@ -147,7 +147,7 @@ export default {
     padding: 12px 50px;
     border-radius: 5px;
     border: none;
-    background: #008081;
+    background: #46344e;
     cursor: pointer;
     color: white;
     font-weight: 600;

@@ -14,7 +14,7 @@ export default {
 <style scoped>
 .banner{
     height: 200px;
-    background:#008081;
+    background:#46344e;
     display: flex;
     justify-content: center;
     align-items: center;

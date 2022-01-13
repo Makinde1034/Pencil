@@ -8,10 +8,7 @@ const articleModule = {
         return {
             globalArticles: null,
             globalArticlesLoading : true,
-            userPosts : {
-                posts : null,
-                userName : ''
-            },
+            userPosts : [],
             likedPosts : null,
             deleteId : "",
             toast :{
@@ -53,7 +50,7 @@ const articleModule = {
             return new Promise((resolve,reject)=>{
                 
                 api.getLikedPosts(id).then((res)=>{
-                    console.log(res,"like posts");
+                    console.log(res.data,"like posts");
                     commit("setLikedPosts",res.data)
                 }).catch((err)=>{
                     reject(err)
@@ -127,7 +124,7 @@ const articleModule = {
             state.globalArticlesLoading = false
         },
         setUserPosts(state,payload){
-            state.userPosts.posts = payload.posts,
+            state.userPosts = payload,
             state.userPosts.userName = payload.email
         },
         setLikedPosts(state,likedPosts){

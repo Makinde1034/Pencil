@@ -145,9 +145,9 @@ export default {
 
 
 .logo{
-    color:#008081;
+    color:#46344e;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 25px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -225,6 +225,13 @@ export default {
     .nav__ul2 img{
         height: 18px;
        
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .nav{
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 

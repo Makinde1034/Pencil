@@ -1,14 +1,14 @@
 <template>
     <!-- <div v-if="loading">Loading article...</div> -->
-    <div style="font-size:12px;margin-top:10px" v-if="userPosts.posts.length === 0">You have not published any article.</div>
-    <div style="padding-bottom:80px" v-else v-for="(post,index) in userPosts.posts" :key="index" class="global__feedbody">
+    <div style="font-size:12px;margin-top:10px" v-if="userPosts.length === 0">You have not published any article.</div>
+    <div style="padding-bottom:80px" v-else v-for="(post,index) in userPosts" :key="index" class="global__feedbody">
         <div class="global__feedtop">
             <div class="image__username__date">
                 <div class="image">
-                    <img :src="post.creatorImage" alt="">
+                    <img :src="post.creator.image" alt="">
                 </div>
                 <div class="username__date">
-                    <p @click="getUser(userPosts.creator)"  class="username">{{userPosts.userName}}</p>
+                    <p @click="getUser(post.creator)"  class="username">{{post.creator.username}}</p>
                     <p class="date">{{formatDate(post.createdAt)}}</p>
                 </div>
             </div>
@@ -61,7 +61,7 @@ export default {
     width: 100px;
     display: flex;
     align-items: center;
-    border-bottom: 2px solid #008081;
+    border-bottom: 2px solid #46344e;
 }
 
 .global__header__title h3{
@@ -100,7 +100,8 @@ export default {
 
 .username{
     font-size: 15px;
-    color: #008081;
+    color: #46344e;
+    font-weight: 600;
     
 }
 
@@ -112,7 +113,7 @@ export default {
 .likes{
     height: 30px;
     width: 30px;
-    border: 1px solid #008081;
+    border: 1px solid #46344e;
     border-radius: 5px;
     display: flex;
     align-items: center;

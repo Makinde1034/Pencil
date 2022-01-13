@@ -110,7 +110,7 @@ export default {
     height: 300px;
     /* max-height: auto; */
     padding-top: 30px;
-    background: #008081;
+    background: #46344e;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -164,11 +164,13 @@ export default {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-
+.router-link{
+    font-weight: 800;
+}
 
 .router-link-exact-active {
-  color: #008081;
-  border-bottom: 1px solid #008081;
+  color: #46344e;
+  border-bottom: 1px solid #46344e;
   /* height: 100%; */
   
 }
@@ -186,7 +188,7 @@ a{
     margin-right: 30px;
     font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     text-decoration: none;
     color: black;
     height: 100%;

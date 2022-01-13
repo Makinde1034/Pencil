@@ -12,13 +12,13 @@
                 <div class="global__feedtop">
                     <div class="image__username__date">
                         <div class="image">
-                            <img :src="article.creatorImage" alt="">
+                            <img :src="article.creator.image" alt="">
                         </div>
                         <div class="username__date">
                             <p class="username"
                                 @click="getUser(article.userId)"
                             >
-                                {{article.creator}}
+                                {{article.creator.username}}
                             </p>
                             <p class="date">{{formatDate(article.createdAt)}}</p>
                         </div>
@@ -127,13 +127,13 @@ export default {
     width: 100px;
     display: flex;
     align-items: center;
-    border-bottom: 2px solid #008081;
+    border-bottom: 2px solid #46344e;
 }
 
 .global__header__title h3{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
-    color: #008081;
+    color: #46344e;
     font-size: 16px;
 }
 
@@ -162,11 +162,13 @@ export default {
 .image img{
     height: 30px;
     width: 30px;
+    border-radius: 50%;
 }
 
 .username{
     font-size: 15px;
-    color: #008081;
+    font-weight: 600;
+    color: #46344e;
     cursor: pointer;
     
 }
@@ -178,7 +180,7 @@ export default {
 
 .likes{
     padding: 3px;
-    border: 1px solid #008081;
+    border: 1px solid #46344e;
     border-radius: 3px;
     display: flex;
     align-items: center;
@@ -221,4 +223,12 @@ export default {
     }
 
 }
+
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .wrap{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
 </style>

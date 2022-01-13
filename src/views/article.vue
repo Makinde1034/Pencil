@@ -8,9 +8,9 @@
                 <div class="user__details">
                     <div class="user__details__info">
                         <div class="user__details__">
-                            <img :src="article.creatorImage" alt="User image">
+                            <img :src="article.creator.image" alt="User image">
                             <div class="username__date">
-                                <p class="username">{{article.creator}}</p>
+                                <p class="username">{{article.creator.username}}</p>
                                 <p class="date">{{formatDate(article.createdAt)}}</p>
                             </div>
                         </div>
@@ -296,4 +296,16 @@ export default {
 
 
 }
+
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .banner{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .body{
+        padding: 20px 20px 20px 20px;
+    }
+}
+
 </style>

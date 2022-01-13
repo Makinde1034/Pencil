@@ -75,14 +75,14 @@ export default {
 .form p{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-top: 10px;
-    color: #008081;
+    color: #46344e;
     margin-bottom: 20px;
 }
 
 .form_p{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-top: 10px;
-    color: #008081;
+    color: #46344e;
     margin-bottom: 20px;
 }
 
@@ -111,7 +111,7 @@ export default {
     width: 100%;
     height: 50px;
     cursor: pointer;
-    background: #008081;
+    background: #46344e;
     color: white;
     font-weight: 700;
     border: none;

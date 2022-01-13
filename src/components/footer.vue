@@ -15,7 +15,7 @@ export default {
 <style scoped>
 .footer{
     height: 60px;
-    background: #F3F3F3;
+    background: #46344e;
     width: 100%;
     /* margin-top: 100vh; */
     position: fixed;
