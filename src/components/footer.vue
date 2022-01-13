@@ -15,7 +15,7 @@ export default {
 <style scoped>
 .footer{
     height: 60px;
-    background: #46344e;
+    background: #F3F3F3;
     width: 100%;
     /* margin-top: 100vh; */
     position: fixed;
@@ -33,7 +33,7 @@ export default {
 }
 
 .footer__inside p{
-    color:#008081;
+    color:#46344e;;
 }
 
 @media  screen and (max-width:480px){
