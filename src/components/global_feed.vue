@@ -11,7 +11,7 @@
             <div v-else v-for="article in globalArticles" :key="article._id" class="global__feedbody">
                 <div class="global__feedtop">
                     <div class="image__username__date">
-                        <div class="image">
+                        <div @click="getUser(article.userId)" class="image">
                             <img :src="article.creator.image" alt="">
                         </div>
                         <div class="username__date">
@@ -98,6 +98,9 @@ export default {
 </script>
 
 <style scoped>
+
+/* @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap'); */
+
 .wrap{
     padding-left: 300px;
     padding-right: 300px;
@@ -175,7 +178,7 @@ export default {
 
 .date{
     font-size: 12px;
-    color: #d1cece;
+    color: #7E7575;;
 }
 
 .likes{
@@ -197,7 +200,7 @@ export default {
 }
 
 .title{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Merriweather Sans', sans-serif;
     font-size: 25px;
     cursor: pointer;
     margin-bottom: 10px;
@@ -206,12 +209,12 @@ export default {
 
 .body{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #d1cece;
+    color: #7E7575;
     cursor: pointer;
 }
 
 .readmore{
-    color: #d1cece;
+    color: #7E7575;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-top: 30px;
 }

@@ -1,7 +1,7 @@
 <template>
     <div class="verification">
         <p>{{verificationMessage}}</p>
-        <button>Sign in</button>
+        <!-- <button>Sign in</button> -->
     </div>
 </template>
 

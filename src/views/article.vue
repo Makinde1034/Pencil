@@ -150,6 +150,7 @@ export default {
 
 .user__details__info img{
     height: 30px;
+    width: 30px;
     margin-right: 10px;
     border-radius: 50%;
     display: inline;
@@ -158,6 +159,12 @@ export default {
 .user__details__info{
     display: flex;
     align-items: flex-end;
+}
+
+.user__details__{
+    display: flex;
+    align-items: center;
+       
 }
 
 .username{
@@ -218,6 +225,7 @@ export default {
     line-height: 40px;
     border-bottom: 1px solid #E5E5E5;
     padding-bottom: 50px;
+    color: #7E7575;
 }
 
 .register{

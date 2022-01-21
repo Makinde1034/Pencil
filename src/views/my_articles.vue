@@ -107,7 +107,7 @@ export default {
 
 .date{
     font-size: 12px;
-    color: #d1cece;
+    color: #7E7575;
 }
 
 .likes{
@@ -137,6 +137,6 @@ export default {
 
 .body{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #d1cece;
+    color: #7E7575;
 }
 </style>

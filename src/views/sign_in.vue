@@ -8,7 +8,7 @@
                 placeholder="Email"
                 type="text"
                 name="email"
-                id="email"
+                id="emmail"
             >
             <input v-model="userDetails.password"  placeholder="Password" type="password" name="email" id="email">
             <button >

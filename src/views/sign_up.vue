@@ -3,9 +3,9 @@
         <form @submit.prevent="register" class="form" action="">
             <header>Sign up</header>
             <router-link to="/signin" class="form_p">Have an account ?</router-link>
-            <input v-model="userDetails.email" required  placeholder="Email" type="text" name="" id="">
-            <input v-model="userDetails.username" required placeholder="Username" type="text" name="" id="">
-            <input v-model="userDetails.password" required  placeholder="Password" type="password" name="" id="">
+            <input v-model="userDetails.email" required  placeholder="Email" type="text" name="" id="email">
+            <input v-model="userDetails.username" required placeholder="Username" type="text" name="" id="username">
+            <input v-model="userDetails.password" required  placeholder="Password" type="password" name="" id="password">
             <button>
                 <Loader v-if="loading" />
                 <p v-else>Sign up</p>
