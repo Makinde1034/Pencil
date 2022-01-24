@@ -33,7 +33,9 @@ export default {
 }
 
 .footer__inside p{
-    color:#46344e;;
+    color:#46344e;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
 }
 
 @media  screen and (max-width:480px){

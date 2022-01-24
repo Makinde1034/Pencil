@@ -9,8 +9,9 @@
                 type="text"
                 name="email"
                 id="emmail"
+                required
             >
-            <input v-model="userDetails.password"  placeholder="Password" type="password" name="email" id="email">
+            <input v-model="userDetails.password"  placeholder="Password" type="password" name="email" required id="email">
             <button >
                 <Loader v-if="loading" />
                 <p v-else>Sign in</p>

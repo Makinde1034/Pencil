@@ -83,7 +83,7 @@ export default {
 
 .box button{
     padding: 7px 20px;
-    background: #008081;
+    background: #46344e;
     color: white;
     border: none;
     font-weight: 600;
